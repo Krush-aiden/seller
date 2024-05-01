@@ -1,0 +1,30 @@
+.form-label{
+    color: black;
+}
+
+.form-control{
+    height: 50px;
+    width: 520px;
+    border-color: rgb(140, 140, 241);
+}
+
+.container-fluid{
+    position: absolute;  
+}
+
+.center{
+    position: absolute;
+    width: 900;
+    height: 900;
+    padding-top: 100px;
+    left: 750px;
+}
+
+.sellercenter {
+    position: absolute;
+    width: 900;
+    height: 800;
+    padding-top: 60px;
+    left: 900px;
+
+}

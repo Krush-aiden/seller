@@ -1,0 +1,60 @@
+<div class="container">
+  <strong>--- Parent Panel! ---</strong>
+
+  <div class="panel panel-heading">
+    <strong>Data From : child </strong>
+  </div>
+  <div class="panel-body">
+    <p>
+      <strong>userName : {{ childData.name }}</strong><br>
+      <strong>Message : {{childData.content}}</strong>
+    </p>
+  </div>
+
+  <form [formGroup]="Parentmessage" class="form">
+    <div class="input-group mb-3">
+      <div>
+        <input type="text" class="form-control" formControlName="PUserName" placeholder="parents's username">
+      </div>
+      <div>
+        <input type="text" class="form-control" formControlName="PMessage" placeholder="Message">
+      </div>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" value="Submit" id="SubmitID" (click)="onClickSubmit()" class="btn btn-primary">Submit
+        </button>
+        <strong>Click submit to send data to child component</strong>
+      </div>
+    </div>
+
+    <strong>Check how ngOnChange works in child component & data binding works</strong>
+    <div class="input-group mb-3">
+      <input type="text" #localReferance class="form-control" placeholder="ngonChange value">
+      <div>
+        <button type="button" value="Submit" id="SubmitID" (click)="localReferanceCheck(localReferance)"
+          class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+    <strong *ngIf="localReferance.value">Now update a new value & check Parent's content currentValue : </strong>
+    <p *ngIf="localReferance.value">
+      {{localReferance.value}}</p>
+  </form>
+
+  <strong>parent content sending to child using two Way binding</strong>
+  <div class="input-group mb-3">
+    <input type="text" [(ngModel)]="localReferancenNgModel" class="form-control" placeholder="Two Way binding value">
+  </div>
+
+  <div class="input-group mb-3">
+    <!-- <input type="text" #afterContentInitValue class="form-control" placeholder="afterContentInitValue"> -->
+  </div>
+
+  <app-child (serverCreated)="afterServerAdded($event)" *ngIf="serverElements || localReferance.value"
+    [srvElement]="serverElements" [onChangeReferanceValue]="localReferance.value"
+    [ngModelReferanceValue]="localReferancenNgModel">
+    <div>
+      <p afterContentInitValue>hello from Parents through ng-Content</p>
+    </div>
+  </app-child>
+
+  <router-outlet></router-outlet>

@@ -1,0 +1,25 @@
+.form-control {
+    height: 50px;
+    width: 520px;
+    border-color: rgb(140, 140, 241);
+}
+
+.form-label {
+    color: black;
+}
+
+/* .danger {
+    padding: 10px;
+} */
+
+@media only screen and (max-width: 600rem) {
+    /* html {
+        font-size: 10%;
+    } */
+
+    /* .form-control {
+        height: 50px;
+        width: 520px;
+        border-color: rgb(140, 140, 241);
+    } */
+}

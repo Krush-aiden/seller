@@ -1,0 +1,30 @@
+:host {
+    display: flex;
+
+    input {
+        padding: 10px;
+        width: calc(100% - 64px);
+        box-sizing: border-box;
+        left: 50%;
+        border: 1px solid darkgrey;
+        border-left: none;
+        border-right: none;
+    }
+
+    .modify {
+        padding: 10px;
+        border: 1px solid darkgrey;
+        font-size: 15px;
+        width: 32px;
+
+        &.decrease {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        &.increase {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+    }
+}

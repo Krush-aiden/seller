@@ -1,0 +1,67 @@
+<h4 class="sellercenter">Seller signUp page</h4>
+
+<div class="center">
+
+  <form #registerForm="ngForm" (ngSubmit)="signUpformOnSubmit(registerForm.value)" class="form">
+
+    <div class="mb-1">
+      <h5>
+        <label for="userName" class="form-label">Username</label>
+      </h5>
+      <input type="text" class="form-control form-control-me" id="userName" name="userName"
+        (ngModel)="registerForm.userName" ngModel #userName="ngModel" required minlength="4"
+        aria-label=".form-control-me example">
+    </div>
+    <span *ngIf="userName.invalid" style="color: red;">
+      <h6>
+        Please enter a name more that 4 letters
+      </h6>
+    </span>
+
+    <div class="mb-1">
+      <h5>
+        <label for="userEmailAddress" class="form-label">E-mail</label>
+      </h5>
+      <input type="email" class="form-control" id="userEmailAddress" name="userEmailAddress" required email
+        (ngModel)="registerForm.userEmailAddress" #userEmailAddress="ngModel" aria-describedby="emailHelp">
+    </div>
+    <span *ngIf="userEmailAddress.invalid" style="color: red;">
+      <h6>
+        enter a valid email address ending with : &#64;mailType.com
+      </h6>
+    </span>
+
+    <div class="mb-1">
+      <h5>
+        <label for="examplepass" class="form-label">Password</label>
+      </h5>
+      <input type="password" width="100" id="userPasswordexp" name="userPassword" required minlength="8" height="2000"
+        (ngModel)="registerForm.userPassword" #userPassword="ngModel" class="form-control">
+
+      <span *ngIf="userPassword.invalid" style="color: red; ">
+        <h6>
+          Please enter a good password with min 8 letters
+        </h6>
+      </span>
+      <br>
+      <div class="form-check-input-bg">
+        <h6>
+          <input type="checkbox" style=" width: 16px; height: 16px;" id="myCheck" (click)="showPassword()"> Show
+          Password
+        </h6>
+      </div>
+    </div>
+
+
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Submit</button>
+
+    <p class="text-center text-muted mt-4 mb-0">Have already an account?
+      <a routerLink="/login" class="fw-bold text-body">
+        <u>Login here</u>
+      </a>
+    </p>
+  </form>
+
+</div>

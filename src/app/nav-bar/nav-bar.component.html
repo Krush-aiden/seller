@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <form class="container-fluid justify-content-start">
+
+    <a class="navbar-brand" routerLink="/productList">Seller Portal</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <button type="button" class="btn btn-outline-success me-2" *ngIf="showProductList" routerLink="/productList"
+            (click)="onClickHome()">Manage Products</button>
+        </li>
+
+        <li class="nav-item">
+          <button type="button" class="btn btn-outline-primary btn-me me-2" *ngIf="showProductList" routerLink="/Parent"
+            (click)="routToParentComp()">Parent-Child
+          </button>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li *ngIf="loginSignupShowHide" class="nav-item">
+          <p class="text-center text-muted mt-1 mb-2">
+            <a routerLink="/profile" class="fw-bold text-body">
+              <strong>
+                <u>{{userName}}</u>
+              </strong>
+            </a>
+          </p>
+        </li>
+      </ul>
+
+
+
+      <ul>
+      </ul>
+
+      <div *ngIf="loginSignupShowHide" class="nav-item">
+        <button type="submit" (click)="onClickLogout()" class="btn btn-danger">Logout</button>
+      </div>
+
+    </div>
+
+  </form>
+
+</nav>

@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-3">
+            <h5>
+                <label for="userName" class="form-label">Hello, {{username}} </label><br>
+                <!-- <label for="userName" class="form-label">Enter your new user name below</label> -->
+            </h5>
+            <input type="text" class="form-control" id="userName" [(ngModel)]='usernameValue'
+                placeholder="Enter your new username">
+            <!-- <button type="button"> Update</button> -->
+            <br>
+            <div class="d-grid gap-2">
+                <button type="button" (click)="onClickUpdate(usernameValue)" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-5">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+                    <div class="mb-2">
+                        <h5>
+                            <label for="emailAddress" class="form-label">Email</label>
+                        </h5>
+                        <input type="text" class="form-control" id="emailAddress" formControlName="emailAddress"
+                            placeholder="Enter email">
+                        <h6>
+                            <div *ngIf="loginForm.get('emailAddress').hasError('required')" style="color: red;">
+                                Email is required</div>
+                            <div *ngIf="loginForm.get('emailAddress').hasError('email')" style="color: red;">
+                                enter a valid email address ending with : &#64;mailType.com</div>
+                        </h6>
+                    </div>
+                    <div class="mb-2">
+                        <h5>
+                            <label class="form-label" for="password">Password</label>
+                        </h5>
+                        <input type="text" class="form-control" id="password" formControlName="password"
+                            placeholder="Enter password">
+                        <h6>
+                            <div *ngIf="loginForm.get('password').hasError('required')" style="color: red;">Password is
+                                required </div>
+                            <div *ngIf="loginForm.get('password').hasError('email')" style="color: red;">Please enter
+                                valid Password </div>
+                        </h6>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+                <div class="d-grid gap-2 mt-1 mb-0">
+                    <button (click)="onClickGuestCredentials()" class="btn btn-danger danger">Get Guest User
+                        Credentails</button>
+                </div>
+                <p class="text-center text-muted mt-3 mb-0">Forget Password
+                    <a routerLink="/forgetPassword" class="fw-bold text-body">
+                        <u>Click here</u>
+                    </a>
+                </p>
+                <p class="text-center text-muted mt-2 mb-0">Create a new account
+                    <a routerLink="/register" class="fw-bold text-body">
+                        <u>Signup here</u>
+                    </a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

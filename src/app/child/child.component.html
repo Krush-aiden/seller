@@ -1,0 +1,50 @@
+<div class="panel panel-default">
+  <strong>--- Child panel! ---</strong>
+  <div class="panel panel-heading">
+    <strong>Data From : parent </strong>
+  </div>
+
+  <div class="panel-body">
+    <p>
+      <strong>userName : {{ element?.name }}</strong><br>
+      <strong>Message : {{element?.content}}</strong>
+    </p>
+  </div>
+
+  <form [formGroup]="Childmessage" class="form">
+    <div class="input-group mb-3">
+      <div>
+        <input type="text" class="form-control" formControlName="PUserName" placeholder="Child's username">
+      </div>
+      <div>
+        <input type="text" class="form-control" formControlName="PMessage" placeholder="Message">
+      </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" value="Submit" id="SubmitID" (click)="onClickChildSubmit()"
+          class="btn btn-primary">Submit</button>
+        <strong>Click submit to send data to parent component</strong>
+      </div>
+    </div>
+    <div>
+      <strong>
+        Parent's content currentValue : {{currentValue}}
+      </strong>
+    </div>
+    <div>
+      <strong>
+        Parent's content previousValue : {{previousValue}}
+      </strong>
+    </div>
+    <div>
+      <strong>
+        Parent's content using ngOnChanges : {{ngModelcurrentValuecheck}}
+      </strong>
+    </div>
+
+    <button *ngIf="false" type="button" (click)="ngOnDestroy()" class="btn btn-primary">stop interval</button>
+    <div class="input-group mb-3">
+      <ng-content></ng-content>
+    </div>
+
+  </form>
+</div>

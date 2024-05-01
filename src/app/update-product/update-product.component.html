@@ -1,0 +1,87 @@
+<div class="container">
+  <form [formGroup]="productForm" class="form" id="formData">
+    <span>
+      <h1>Update product Details</h1>
+    </span>
+    <div class="form-group">
+      <label for="productNameId">
+        <h5>
+          Product name
+        </h5>
+      </label>
+      <input class="form-control form-control-lg" formControlName="productName" type="text" name="productName"
+        id="productNameId" aria-label=".form-control-lg example">
+    </div>
+    <div>
+      <label for="productPriceId">
+        <h5>
+          Product price
+        </h5>
+      </label>
+      <input class="form-control form-control-lg" formControlName="productPrice" type="text" name="productPrice"
+        id="productPriceId" aria-label=".form-control-lg example">
+    </div>
+    <div>
+      <label for="productCatId">
+        <h5>
+          Product category
+        </h5>
+      </label>
+      <select name="productCat" id="productCatId" formControlName="productCat" class="form-select form-select-lg mb-3"
+        aria-label="Large select example">
+        <option selected disabled value="">Select options</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Gadget">Gadget</option>
+        <option value="Grocery">Grocery</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="quantity">
+        <h5>
+          Product stock
+        </h5>
+      </label>
+      <app-counter-input type="number" formControlName="quantity"></app-counter-input>
+    </div>
+
+    <div>
+      <label for="productcodeId">
+        <h5>
+          Product code
+        </h5>
+      </label>
+
+      <input class="form-control form-control-lg" formControlName="productcode" type="text" name="productcode"
+        id="productcodeId" aria-label=".form-control-lg example">
+    </div>
+    <label for="productDisId">
+      <h5>
+        Product Description
+      </h5>
+    </label>
+    <div>
+      <input class="form-control form-control-lg" formControlName="productDis" type="text" name="productDis"
+        id="productDisId" aria-label=".form-control-lg example">
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="inputGroupFile01">Upload</label>
+      <input type="file" (change)="onSelectFile($event)" class="form-control form-control-lg" id="inputGroupFile01">
+    </div>
+
+    <div>
+      <img [src]=selectedImageURL height="80" width="80" id="imagePrev"><br>
+      <label for="imagePrev">{{selectedFileName}}</label>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button type="button" class="btn btn-danger btn-lg" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+
+      <button type="button" value="Submit" id="SubmitID" (click)="onClickSubmit()" class="btn btn-primary btn-lg">Update
+      </button>
+    </div>
+    <div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,40 @@
+.my-button {
+    position: relative;
+    /* right: 60px; */
+    /* flo; */
+    /* Adjust padding as needed */
+    /* Adjust font size as needed */
+    /* display: flex; */
+    /* justify-content: flex-end; */
+    /* padding: 10px 20px; */
+    /* Adjust padding as needed */
+
+}
+
+.productListEle {
+    position: absolute;
+    left: 60px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 500px;
+}
+
+
+.pagination {
+    position: absolute;
+    left: 780px;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+.noProductDsiplay {
+    position: relative;
+    left: 450px;
+    /* font-size: 50px; */
+}

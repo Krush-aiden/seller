@@ -1,0 +1,25 @@
+<p>verify works!</p>
+
+<div class="center">
+
+  <form #otpForm="ngForm" (ngSubmit)="submitOTPForm(otpForm.value)" class="form">
+
+    <div class="mb-1">
+      <h5>
+        <label for="userName" class="form-label">Verify OTP</label>
+      </h5>
+      <input type="number" class="form-control form-control-me" id="emailOTP" name="emailOTP"
+        (ngModel)="otpForm.emailOTP" #emailOTP="ngModel" (input)="checkOnChange($event.target.value)" required
+        pattern="\d{1,6}" aria-label=".form-control-me example">
+    </div>
+    <span *ngIf="this.checkOTPCount?.length != 6" style="color: red;">
+      <h6>
+        An 6 digit OTP sent to your respective email address:{{emailAddress}}
+      </h6>
+    </span>
+
+    <button type="submit" [disabled]="this.checkOTPCount?.length != 6" class="btn btn-primary">Submit</button>
+
+  </form>
+
+</div>
