@@ -28,6 +28,10 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: '/',
+    component: LoginComponent,
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },
