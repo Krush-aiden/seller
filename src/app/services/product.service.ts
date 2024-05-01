@@ -15,7 +15,7 @@ export class ProductService {
   userNameValue = new Subject<string>();
   userNameValue$ = this.userNameValue.asObservable();
 
-  hostURL:any = 'https://sellerportal-frontend.onrender.com';
+  hostURL:any = 'https://sellerportal-backend.onrender.com';
   // http://127.0.0.1:3000/
 
   constructor(
