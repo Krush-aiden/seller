@@ -18,7 +18,7 @@ export class SellerService {
   OTPResult = new Subject<Object>();
 
   loginResult$ = this.loginResult.asObservable();
-  hostURL:any = 'https://sellerportal.onrender.com';
+  hostURL:any = 'https://sellerportal-frontend.onrender.com';
   // http://127.0.0.1:3000/
 
   constructor(private http: HttpClient, private router: Router) {

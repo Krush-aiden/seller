@@ -39,7 +39,7 @@ export class ProductListComponent {
   jsonPipeValue = {"name":"krushna"};
   filter = new FormControl('',{nonNullable: true});
   searchTextValue: any;
-  hostURL:any = 'https://sellerportal.onrender.com';
+  hostURL:any = 'https://sellerportal-frontend.onrender.com';
 
   constructor(
     private router: Router,
