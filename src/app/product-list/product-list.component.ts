@@ -39,6 +39,8 @@ export class ProductListComponent {
   jsonPipeValue = {"name":"krushna"};
   filter = new FormControl('',{nonNullable: true});
   searchTextValue: any;
+  hostURL:any = 'https://sellerportal.onrender.com';
+
   constructor(
     private router: Router,
     private modalService: NgbModal,
@@ -47,7 +49,7 @@ export class ProductListComponent {
     private commonService: commonService,
     private paginationConfig: NgbPaginationConfig,
   ) {
-    this.ImagePath = 'http://127.0.0.1:3000/uploads/';
+    this.ImagePath = `${this.hostURL}/uploads/`;
     this.searchTextValue = this.searchText;
   }
 
