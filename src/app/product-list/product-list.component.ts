@@ -40,8 +40,9 @@ export class ProductListComponent {
   filter = new FormControl('',{nonNullable: true});
   searchTextValue: any;
   hostURL:any = 'https://sellerportal-backend.onrender.com';
-  // http://127.0.0.1:3000/
-
+  // hostURL:any = 'http://127.0.0.1:3000';
+  // hostURL:any = 'http://192.168.29.116:3000';
+  
   constructor(
     private router: Router,
     private modalService: NgbModal,
@@ -78,7 +79,7 @@ export class ProductListComponent {
       // console.log('this.page', this.page);
       // console.log('this.page', this.pageSize);
       this.paginationProductList = this.productList.slice( (this.page-1) * this.pageSize, this.page * this.pageSize);
-      // console.log("🚀 ~ ProductListComponent ~ value ~ slice-value:", this.paginationProductList);
+      console.log("🚀 ~ ProductListComponent ~ value ~ slice-value:", this.paginationProductList);
     }
     onShort(listValue){
       //Desc

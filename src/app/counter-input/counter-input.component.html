@@ -1,5 +1,6 @@
 <button class="modify decrease" (click)="decrease()" [disabled]="disabled">-</button>
-<input [(ngModel)]="value" (input)="Number($event.target.value)" (change)="registerOnChange" [disabled]="disabled" />
+<input [(ngModel)]="value" (input)="quantityCount($event.target.value)" (change)="registerOnChange"
+    [disabled]="disabled" />
 <button class="modify increase" (click)="increase()" [disabled]="disabled">+</button>
 
 

@@ -19,7 +19,6 @@ import { Location } from '@angular/common';
 })
 export class AppComponent implements OnInit, OnChanges {
   title = 'seller';
-  count: number = 0;
   // swal: any;
   showNavBarContent = false;
   modalValue = [];

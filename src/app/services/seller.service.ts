@@ -8,6 +8,7 @@ import { OTP, SignUp, login } from '../dataTypes';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { NgToastService } from 'ng-angular-popup';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +16,20 @@ import { jwtDecode } from 'jwt-decode';
 export class SellerService {
   isSellerLoggedIn = new BehaviorSubject<boolean>(false);
   loginResult = new Subject<string>();
-  OTPResult = new Subject<Object>();
+  OTPResult = new Subject<any>();
 
   loginResult$ = this.loginResult.asObservable();
-  hostURL:any = 'https://sellerportal-backend.onrender.com';
-  // http://127.0.0.1:3000/
+  OTPResult$ = this.OTPResult.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {
+
+  hostURL:any = 'https://sellerportal-backend.onrender.com';
+  // hostURL:any = 'http://127.0.0.1:3000'
+  // hostURL:any = 'http://192.168.29.116:3000';
+
+
+  constructor(private http: HttpClient,
+    private toast: NgToastService,
+     private router: Router) {
     
   }
 
@@ -68,12 +76,21 @@ export class SellerService {
         next: (result) => {
           console.log('🚀 ~ SellerService ~ loginUser ~ result:', result);
           if (result.body.token && result.body) {
-            localStorage.setItem('userKey', result.body.token);
-            localStorage.setItem('username', result.body.username);
-            localStorage.setItem('uniqueEmailId',result.body['uniqueEmailId']);
-            
-            this.router.navigate(['/productList']);
-            this.loginResult.next('login successful');
+              if(result.body['OTPConfirmed']){
+                localStorage.setItem('userKey', result.body.token);
+                localStorage.setItem('username', result.body.username);
+                localStorage.setItem('uniqueEmailId',result.body['uniqueEmailId']);
+
+                this.router.navigate(['/productList']);
+                this.loginResult.next('login successful');
+              }else {
+                this.loginResult.next('OTP validation not Confirmed');
+                // this.OTPResult.next(result.body['OTPType']);
+                if(result.body['OTPType'] == "signUp"){
+                  this.router.navigate([`/verify/${result.body['uniqueUserId']+"&"+'account activation'}`]);
+                }
+              }
+           
           }
         },
         error: (error) => {
@@ -94,3 +111,5 @@ export class SellerService {
 
 
 }
+
+

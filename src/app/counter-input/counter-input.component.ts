@@ -16,18 +16,17 @@ import { ControlValueAccessor,NG_VALUE_ACCESSOR, FormControl, FormGroup } from '
 
 })
 export class CounterInputComponent implements OnInit, ControlValueAccessor {
-  // value: number = 0;
   disabled: false;
 
   counter = 0;
   private _renderer: Renderer2;
   private _elementRef: ElementRef;
   @Directive({
-    selector: 'input[type="number"]',
+    selector: 'input[type="text"]',
   })
 
-  @Input() max: number;
-  value:number = 0;
+  @Input() max: String;
+  value:any = "0";
 
   onChanged:any = () => {};
   onTouched:any = () => {};
@@ -57,15 +56,15 @@ export class CounterInputComponent implements OnInit, ControlValueAccessor {
     }
   }
   
-  Number(value){
-    const numberValue = parseInt(value);
+  quantityCount(value){
+    const numberValue = value;
     this.onChanged(numberValue);
   }
 
   onChange(){
   }
 
-  writeValue(angularProvidedFunction: number): void {
+  writeValue(angularProvidedFunction: any): void {
     this.value = angularProvidedFunction;
   }
 

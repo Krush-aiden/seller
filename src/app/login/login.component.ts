@@ -44,6 +44,7 @@ export class LoginComponent {
   onSubmit(loginFormValue) {
     console.log("🚀 ~ LoginComponent ~ onSubmit ~ this.loginForm.valid:", this.loginForm.valid)
     if (this.loginForm.valid) {
+      loginFormValue['OTPType'] = "signUp";
       this.sellerService.loginUser(loginFormValue);
     } else {
       console.log('else');
@@ -57,16 +58,22 @@ export class LoginComponent {
     }
 
     this.sellerService.loginResult.subscribe((result) => {
-      if (result != 'invalid credential') {
+      if (result == 'login successful') {
         this.toast.success({
           detail: 'success',
           summary: 'login successful',
           duration: 1000,
         });
+      } else if(result == 'OTP validation not Confirmed'){
+        this.toast.error({
+          detail: 'error',
+          summary: 'OTP validation not Confirmed',
+          duration: 1000,
+        });
       } else {
         this.toast.error({
           detail: 'error',
-          summary: 'invalid credential',
+          summary: result,
           duration: 1000,
         });
       }

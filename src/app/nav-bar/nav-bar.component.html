@@ -1,9 +1,13 @@
+<!-- <div class="container-fluid"> -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <form class="container-fluid justify-content-start">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <a class="navbar-brand" routerLink="/productList">Seller Portal</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav">
         <li class="nav-item">
           <button type="button" class="btn btn-outline-success me-2" *ngIf="showProductList" routerLink="/productList"
@@ -18,28 +22,33 @@
       </ul>
 
       <ul class="navbar-nav ms-auto">
-        <li *ngIf="loginSignupShowHide" class="nav-item">
-          <p class="text-center text-muted mt-1 mb-2">
+        <li class="nav-item">
+          <p class="text-muted mt-1 mb-2">
             <a routerLink="/profile" class="fw-bold text-body">
-              <strong>
-                <u>{{userName}}</u>
-              </strong>
+              <u>
+                <h4>
+                  <strong>
+                    {{userName}}
+                  </strong>
+                </h4>
+              </u>
+
             </a>
           </p>
         </li>
       </ul>
 
-
-
-      <ul>
+      <ul class="navbar-nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <div *ngIf="loginSignupShowHide" class="nav-item">
+              <button type="submit" (click)="onClickLogout()" class="btn btn-danger">Logout</button>
+            </div>
+          </li>
+        </ul>
       </ul>
 
-      <div *ngIf="loginSignupShowHide" class="nav-item">
-        <button type="submit" (click)="onClickLogout()" class="btn btn-danger">Logout</button>
-      </div>
-
     </div>
-
-  </form>
-
+  </div>
 </nav>
+<!-- </div> -->

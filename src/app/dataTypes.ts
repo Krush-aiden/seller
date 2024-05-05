@@ -10,7 +10,7 @@ export interface login {
 }
 
 export interface OTP {
-  emailOTP: number;
+  emailOTP: String;
 }
 
 export interface product {

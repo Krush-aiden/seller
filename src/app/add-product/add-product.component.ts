@@ -34,7 +34,7 @@ export class AddProductComponent {
     productCat: new FormControl(''),
     productcode: new FormControl(''),
     productDis: new FormControl(''),
-    quantity: new FormControl(0),
+    quantity: new FormControl('0'),
   });
 
   constructor(
@@ -61,7 +61,7 @@ export class AddProductComponent {
     let checkBlankImage = false;
 
     for (let keys in objValue) {
-      if (objValue[keys] !== '' && typeof objValue[keys] !== 'number') {
+      if (objValue[keys] !== '' && objValue[keys] !== '0') {
           checkBlankForm = true;
       } 
       formData.append(keys, objValue[keys]);

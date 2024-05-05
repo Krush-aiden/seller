@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { SellerService } from '../services/seller.service';
 @Component({
   selector: 'app-nav-bar',
@@ -40,9 +41,27 @@ export class NavBarComponent {
   routToParentComp() {}
 
   onClickLogout() {
-    localStorage.removeItem('userKey');
-    localStorage.removeItem('username');
-    localStorage.removeItem('uniqueEmailId');
-    window.location.reload();
+
+    Swal.fire({
+      title: 'warning',
+      text: 'Are you sure you want to logout ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: "Yes"
+    }).then((res) => {
+      console.log("🚀 ~ NavBarComponent ~ onClickLogout ~ res:", res)
+      // return;
+      if (res.isConfirmed) {
+        localStorage.removeItem('userKey');
+        localStorage.removeItem('username');
+        localStorage.removeItem('uniqueEmailId');
+        this.router.navigate(['/login']).then((result) => {
+          if(result){
+           window.location.reload();
+          }
+        })
+      }
+    });
+    
   }
 }

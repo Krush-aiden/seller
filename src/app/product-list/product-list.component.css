@@ -18,16 +18,25 @@
 
 .container {
     display: flex;
-    align-items: center;
-    position: absolute;
-    left: 500px;
+    /* align-items: center; */
+    position: relative;
+    /* left: 150px; */
+    /* width: 2800px; */
+    max-width: 1970px;
 }
 
 
 .pagination {
     position: absolute;
-    left: 780px;
+    left: 980px;
 }
+
+/* 
+.addProduct {
+    position: relative;
+    left: 580px;
+} */
+
 
 .highlight {
     background-color: yellow;
@@ -35,6 +44,20 @@
 
 .noProductDsiplay {
     position: relative;
-    left: 450px;
+    /* left: 750px; */
     /* font-size: 50px; */
 }
+
+/* .container-fluid {
+    position: relative;
+} */
+
+/* @media screen and (max-width:600px) {
+
+    .container-fluid {
+        display: flex;
+        align-items: left;
+        position: relative;
+        left: 50px;
+    }
+} */

@@ -1,6 +1,17 @@
+<!-- <html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head> -->
+
+<!-- <body> -->
+
 <div class="container">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <div class="card" style="width: 1600px">
+  <div class="card" style="width: 2600px">
     <div class="card-header">
       <h1 class="checkTest">Product List</h1>
       <div>
@@ -16,57 +27,67 @@
           </div>
           <!--pipe learning-->
           <!-- <h3>{{pipeValue | slice : 1:4}}</h3>
-          <h3>{{dateValue | date: "d-m-y"}}</h3>
-          <h3>{{jsonPipeValue | json | lowercase}}</h3> -->
+            <h3>{{dateValue | date: "d-m-y"}}</h3>
+            <h3>{{jsonPipeValue | json | lowercase}}</h3> -->
 
           <!-- pagination -->
-          <ngb-pagination *ngIf="paginationProductList.length > 0" class="pagination"
-            [collectionSize]="productList.length" [rotate]="true" [ellipses]="false" [(page)]="page" [maxSize]="6"
-            [boundaryLinks]="true" (pageChange)="paginateProductList()"></ngb-pagination>
-          <!-- Add Product -->
-          <button type="button" class="btn btn-primary btn-me me-2 my-button" (click)="onClickAddProducts()">
-            Add Products [+]
-          </button>
+          <ngb-pagination *ngIf="paginationProductList.length > 0" [collectionSize]="productList.length" [rotate]="true"
+            [ellipses]="false" [(page)]="page" [maxSize]="6" [boundaryLinks]="true"
+            (pageChange)="paginateProductList()">
+          </ngb-pagination>
         </div>
+        <!-- Add Product -->
+        <button type="button" class="btn btn-primary btn-me me-2 my-button addProduct" (click)="onClickAddProducts()">
+          Add Products [+]
+        </button>
       </div>
     </div>
     <!-- product List Table -->
     <div class="card-body">
-      <table class="table  table-bordered">
-        <thead class="table table-white">
-          <tr>
-            <th scope="col" sortable="productId" (click)="onShort('count')"># <i class="fa fa-fw fa-sort"></i></th>
-            <th scope="col" (click)="onShort('productName')"> <i class="bi bi-sort-up"></i> Product name <i
-                class="fa fa-fw fa-sort"></i></th>
-            <th scope="col" (click)="onShort('productPrice')">Product price <i class="fa fa-fw fa-sort"></i></th>
-            <th scope="col" (click)="onShort('productCat')"> Product Cat <i class="fa fa-fw fa-sort"></i></th>
-            <th scope="col" (click)="onShort('productcode')">Product code <i class="fa fa-fw fa-sort"></i></th>
-            <th scope="col" (click)="onShort('productDis')">Product Description <i class="fa fa-fw fa-sort"></i></th>
-            <th scope="col">Product Images </th>
-            <th scope="col">Action </th>
-          </tr>
-        </thead>
-        <tbody id="productTable">
-          <tr *ngFor="let eachProduct of paginationProductList | searchFilter : searchText">
-            <td><ngb-highlight [result]="eachProduct.count" [term]="searchText" /></td>
-            <td><ngb-highlight [result]="eachProduct.productName" [term]="searchText" /></td>
-            <td><ngb-highlight [result]="eachProduct.productPrice" [term]="searchText" /></td>
-            <td><ngb-highlight [result]="eachProduct.productCat" [term]="searchText" /></td>
-            <td><ngb-highlight [result]="eachProduct.productcode" [term]="searchText" /></td>
-            <td><ngb-highlight [result]="eachProduct.productDis" [term]="searchText" /></td>
-            <td><img [src]=eachProduct.imageURL height="80" width="80"></td>
-            <td> <button type="button" class="btn btn-success" (click)="onClickupdate(eachProduct['_id'])">
-                update
-              </button> |
-              <button type="button" id="deleteBtn" class="btn btn-danger" (click)="onClickDelete(eachProduct['_id'])">
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+
+        <table class="table  table-bordered">
+          <thead class="table table-white">
+            <tr>
+              <th scope="col" sortable="productId" (click)="onShort('count')"># <i class="fa fa-fw fa-sort"></i></th>
+              <th scope="col" (click)="onShort('productName')"> <br><i class="fa fa-fw fa-sort"></i> Product name </th>
+              <th scope="col" (click)="onShort('productPrice')"><br><i class="fa fa-fw fa-sort"></i> Product price </th>
+              <th scope="col" (click)="onShort('productCat')"><br><i class="fa fa-fw fa-sort"></i> Product Cat </th>
+              <th scope="col" (click)="onShort('quantity')"><br><i class="fa fa-fw fa-sort"></i> Product stocks</th>
+              <th scope="col" (click)="onShort('productcode')"><br><i class="fa fa-fw fa-sort"></i>Product code</th>
+              <th scope="col" (click)="onShort('productDis')"><br><i class="fa fa-fw fa-sort"></i>Product Description
+              </th>
+              <th scope="col">Product Images </th>
+              <th scope="col">Action </th>
+            </tr>
+          </thead>
+          <tbody id="productTable">
+            <tr *ngFor="let eachProduct of paginationProductList | searchFilter : searchText">
+              <td><ngb-highlight [result]="eachProduct.count" [term]="searchText" /></td>
+              <td><ngb-highlight [result]="eachProduct.productName" [term]="searchText" /></td>
+              <td><ngb-highlight [result]="eachProduct.productPrice" [term]="searchText" /></td>
+              <td><ngb-highlight [result]="eachProduct.productCat" [term]="searchText" /></td>
+              <td><ngb-highlight [result]="eachProduct.quantity" [term]="searchText" /></td>
+              <td><ngb-highlight [result]="eachProduct.productcode" [term]="searchText" /></td>
+              <td><ngb-highlight [result]="eachProduct.productDis" [term]="searchText" /></td>
+              <td><img [src]=eachProduct.imageURL height="80" width="80"></td>
+              <td> <button type="button" class="btn btn-success" (click)="onClickupdate(eachProduct['_id'])">
+                  update
+                </button> |
+                <button type="button" id="deleteBtn" class="btn btn-danger" (click)="onClickDelete(eachProduct['_id'])">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <h4 class="noProductDsiplay" *ngIf="paginationProductList.length <= 0">No Product is listed yet to display</h4>
     </div>
   </div>
 
 </div>
+
+<!-- </body> -->
+
+<!-- </html> -->

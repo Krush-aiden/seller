@@ -34,7 +34,7 @@ export class commonService {
     localStorage.removeItem('userKey');
     window.location.reload();
   }
-  setTotalItemCount(value: number){
+  setTotalItemCount(value: any){
     return this.totalItemCount.next(value);
   }
 

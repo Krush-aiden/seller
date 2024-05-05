@@ -25,7 +25,7 @@ export class SellerregisterComponent {
   userName: string;
   emailAddress: any;
   alreadyexistsEmail = '';
-
+  
   constructor(
     private formBuilder: FormBuilder,
     private sellerService: SellerService,
@@ -44,7 +44,7 @@ export class SellerregisterComponent {
       next: (result) => {
         console.log("🚀 ~ SellerregisterComponent ~ this.sellerService.registerUser ~ result:", result)
         if (result) {
-          this.router.navigate([`/verify/${result.body.resItems.uniqueUserId}`]);
+          this.router.navigate([`/verify/${result.body.resItems.uniqueUserId}&${result.body.resItems['OTPType']}`]);
         }
       },
       error: (error) => {

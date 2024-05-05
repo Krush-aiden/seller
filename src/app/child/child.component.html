@@ -13,13 +13,13 @@
 
   <form [formGroup]="Childmessage" class="form">
     <div class="input-group mb-3">
-      <div>
-        <input type="text" class="form-control" formControlName="PUserName" placeholder="Child's username">
-      </div>
-      <div>
-        <input type="text" class="form-control" formControlName="PMessage" placeholder="Message">
-      </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <div>
+          <input type="text" class="form-control" formControlName="PUserName" placeholder="Child's username">
+        </div>
+        <div>
+          <input type="text" class="form-control" formControlName="PMessage" placeholder="Message">
+        </div>
         <button type="button" value="Submit" id="SubmitID" (click)="onClickChildSubmit()"
           class="btn btn-primary">Submit</button>
         <strong>Click submit to send data to parent component</strong>

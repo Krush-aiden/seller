@@ -1,24 +1,24 @@
-.form-label{
+.form-label {
     color: black;
 }
 
-.form-control{
+.form-control {
     height: 50px;
     width: 520px;
     border-color: rgb(140, 140, 241);
 }
 
-.container-fluid{
-    position: absolute;  
-}
-
-.center{
+/* .container-fluid {
     position: absolute;
-    width: 900;
+} */
+
+/* .container {
+    position: relative;
+    max-width: 900;
     height: 900;
     padding-top: 100px;
-    left: 750px;
-}
+    left: 350px;
+} */
 
 .sellercenter {
     position: absolute;
@@ -28,3 +28,28 @@
     left: 900px;
 
 }
+
+/* 
+@media screen and (max-width:600px) {
+
+    .container {
+        position: relative;
+        max-width: 900;
+        height: 900;
+        padding-top: 100px;
+        left: 5px;
+    }
+
+} */
+
+/* @media screen and (max-width:1280) {
+
+    .container {
+        position: relative;
+        max-width: 900;
+        height: 900;
+        padding-top: 100px;
+        left: 150px;
+    }
+
+} */

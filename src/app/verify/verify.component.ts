@@ -8,6 +8,8 @@ import { jwtDecode } from 'jwt-decode';
 import { NgToastService } from 'ng-angular-popup';
 import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs/internal/Subject';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-verify',
@@ -19,6 +21,11 @@ export class VerifyComponent {
   emailAddress: any;
   otpForm: any;
   checkOTPCount : any;
+  otpVerificationReason: String;
+  newValue: any;
+  OTPResult = new Subject<any>();
+  OTPResult$ = this.OTPResult.asObservable();
+  data$: Observable<any>;
 
   constructor(
     private SellerregisterComponent: SellerregisterComponent,
@@ -35,10 +42,18 @@ export class VerifyComponent {
     this.commonService.currentTotalItems.subscribe((result: SignUp) => {
       this.emailAddress = result.userEmailAddress;
     });
+    const userIDurl = this.activeRout.snapshot.params.uniqueUserId;
+    const parts = userIDurl.split('&');
+    const wordAfterAmpersandAnother = parts[0];    
+    const wordAfterAmpersand = parts[1];    
+    console.log("🚀 ~ VerifyComponent ~ ngOnInit ~ wordAfterAmpersandAnother:", wordAfterAmpersandAnother)
 
-    this.sellerService.OTPResult.subscribe((userEmailAddress) => {
-      this.emailAddress = userEmailAddress;
-    });
+    console.log("🚀 ~ VerifyComponent ~ ngOnInit ~ wordAfterAmpersand:", wordAfterAmpersand)
+    this.otpVerificationReason = wordAfterAmpersand
+  }
+
+  changeOtpReason(){
+   
   }
 
   urlMemoziation(){
@@ -50,14 +65,31 @@ export class VerifyComponent {
   }
  
   submitOTPForm(OTPValues: OTP) {
-    // console.log("🚀 ~ VerifyComponent ~ submitOTPForm ~ OTPValues:", OTPValues);
+    console.log("🚀 ~ VerifyComponent ~ submitOTPForm ~ OTPValues:", OTPValues);
     let signUpOtpuniqueUserId = this.activeRout.snapshot.params.uniqueUserId;
+    const parts = signUpOtpuniqueUserId.split('&');
+    signUpOtpuniqueUserId = parts[0];  
     console.log("🚀 ~ VerifyComponent ~ submitOTPForm ~ signUpOtpuniqueUserId:", signUpOtpuniqueUserId)
+
     OTPValues['uniqueUserID'] = signUpOtpuniqueUserId;
     this.sellerService.verifyOTP(OTPValues).subscribe({
       next: (result) => {
         console.log("🚀 ~ VerifyComponent ~ this.sellerService.verifyOTP ~ result:", result)
-        if(result.body['OTPType'] == "signUp"){
+        if(result.body['OTPConfirmed'] == true && result.body['OTPType'] == "signUp"){
+          Swal.fire({
+            title: 'Success',
+            text: 'Account Activated successfully',
+            icon: 'success',
+          }).then((res) => {
+            if (res) {
+                localStorage.setItem('username', result.body['username']);
+                localStorage.setItem('userKey',result.body['token']);
+                localStorage.setItem('uniqueEmailId',result.body['uniqueEmailId']);
+                this.router.navigate(['/productList']);
+            }
+          });
+        }
+        else if(result.body['OTPType'] == "signUp"){
         Swal.fire({
           title: 'Success',
           text: 'Sign Up process completed Successfully',
@@ -70,10 +102,11 @@ export class VerifyComponent {
               this.router.navigate(['/productList']);
           }
         });
-      } 
-        if(result.body['OTPType'] == "forgetPassword"){
+        } 
+        else if(result.body['OTPType'] == "forgetPassword"){
           this.router.navigate(['/resetPassword',result.body['uniqueUserId']]);
         }
+
       },
       error: (error) => {
         console.log("🚀 ~ VerifyComponent ~ this.sellerService.verifyOTP ~ error.error.msg.includes", error.error.msg.includes("expired"))

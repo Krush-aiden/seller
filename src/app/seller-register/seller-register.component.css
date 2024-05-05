@@ -8,8 +8,9 @@
     border-color: rgb(140, 140, 241);
 }
 
-.container-fluid {
-    position: absolute;
+.container {
+    position: relative;
+    left: 420px;
 }
 
 .center {
@@ -21,10 +22,20 @@
 }
 
 .sellercenter {
-    position: absolute;
-    width: 900;
-    height: 800;
-    padding-top: 60px;
-    left: 1050px;
+    position: relative;
+    left: 150px;
+}
 
+.logintext {
+    position: relative;
+    left: 150px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .container {
+        position: relative;
+        left: 10px;
+        /* width: 100px; */
+    }
 }

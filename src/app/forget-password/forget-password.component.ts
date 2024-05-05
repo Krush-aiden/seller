@@ -36,7 +36,7 @@ export class ForgetPasswordComponent {
       next: (result) => {
         console.log("🚀 ~ ForgetPasswordComponent ~ this.sellerService.forgetPassword ~ result:", result)
         if (result) {
-          this.router.navigate([`/verify/${result.body.resItems.uniqueUserId}`]);
+          this.router.navigate([`/verify/${result.body.resItems.uniqueUserId}&${result.body.resItems.OTPType}`]);
         }
       },
       error: (error) => {

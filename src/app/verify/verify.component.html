@@ -1,25 +1,40 @@
 <p>verify works!</p>
 
-<div class="center">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-  <form #otpForm="ngForm" (ngSubmit)="submitOTPForm(otpForm.value)" class="form">
+<body>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-5">
+        <form #otpForm="ngForm" (ngSubmit)="submitOTPForm(otpForm.value)" class="form">
 
-    <div class="mb-1">
-      <h5>
-        <label for="userName" class="form-label">Verify OTP</label>
-      </h5>
-      <input type="number" class="form-control form-control-me" id="emailOTP" name="emailOTP"
-        (ngModel)="otpForm.emailOTP" #emailOTP="ngModel" (input)="checkOnChange($event.target.value)" required
-        pattern="\d{1,6}" aria-label=".form-control-me example">
+          <div class="mb-1">
+            <!-- <h5> -->
+            <label for="userName" class="form-label">Verify OTP for {{otpVerificationReason}}</label>
+            <!-- </h5> -->
+            <!-- <div *ngIf="data$ | async as data">
+              <p>{{ data.property }}</p>
+            </div> -->
+
+            <!-- <label for="userName" class="form-label">Verify OTP for {{ data$ | async}}</label> -->
+            <input type="text" class="form-control form-control-me" id="emailOTP" name="emailOTP"
+              (ngModel)="otpForm.emailOTP" #emailOTP="ngModel" (input)="checkOnChange($event.target.value)" required
+              pattern="\d{1,6}" aria-label=".form-control-me example">
+          </div>
+          <span *ngIf="this.checkOTPCount?.length != 6" style="color: red;">
+            <h6>
+              An 6 digit OTP sent to your respective email address:{{emailAddress}}
+            </h6>
+          </span>
+
+          <button type="submit" [disabled]="this.checkOTPCount?.length != 6" class="btn btn-primary">Submit</button>
+
+        </form>
+      </div>
     </div>
-    <span *ngIf="this.checkOTPCount?.length != 6" style="color: red;">
-      <h6>
-        An 6 digit OTP sent to your respective email address:{{emailAddress}}
-      </h6>
-    </span>
 
-    <button type="submit" [disabled]="this.checkOTPCount?.length != 6" class="btn btn-primary">Submit</button>
 
-  </form>
-
-</div>
+  </div>
+</body>

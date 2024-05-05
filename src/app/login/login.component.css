@@ -11,15 +11,32 @@
 /* .danger {
     padding: 10px;
 } */
+@media only screen and (max-width: 1100px) {
 
-@media only screen and (max-width: 600rem) {
-    /* html {
-        font-size: 10%;
-    } */
+    .container {
+        position: relative;
+        right: 200px;
+        /* height: 100px; */
+        width: 60px;
+    }
+}
 
-    /* .form-control {
-        height: 50px;
-        width: 520px;
-        border-color: rgb(140, 140, 241);
-    } */
+@media only screen and (max-width: 600px) {
+
+    .container {
+        position: relative;
+        right: 190px;
+        /* height: 100px; */
+        width: 60px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    .container {
+        position: relative;
+        right: 160px;
+        /* height: 100px; */
+        width: 60px;
+    }
 }
