@@ -18,18 +18,18 @@ import { Router } from '@angular/router';
   templateUrl: './parent.component.html',
   styleUrl: './parent.component.css',
 })
-export class ParentComponent implements OnInit, OnChanges,OnDestroy {
+export class ParentComponent implements OnInit, OnChanges, OnDestroy {
   public serverElements: object;
-  value = 'ramesh'
+  value = 'ramesh';
   name = 'alex';
-  username = 'suresh'
+  username = 'suresh';
   localReferance: 'hello';
   localReferancenNgModel: 'helloTwo';
-
+  checkTwoWayInParent: string;
   @Input() hello: string;
   @Output() serverCreated1 = new EventEmitter<'hello'>();
-  
-  valueOutput: string
+
+  valueOutput: string;
   childData = {
     data: '',
     name: '',
@@ -47,25 +47,38 @@ export class ParentComponent implements OnInit, OnChanges,OnDestroy {
   ngOnChanges(changes: SimpleChanges) {
     console.log('changes', changes);
   }
-  getdata(value: string){
-  console.log("🚀 ~ ParentComponent ~ getdata ~ value:", value)
-
+  getdata(value: string) {
+    console.log('🚀 ~ ParentComponent ~ getdata ~ value:', value);
   }
 
   ngOnInit() {
     console.log('inside app-Parent====>');
-    console.log("🚀 ~ ParentComponent ~ value:", this.value)
-    console.log('valueOutput', this.valueOutput)
-
+    console.log('🚀 ~ ParentComponent ~ value:', this.value);
+    console.log('valueOutput', this.valueOutput);
+    console.log('localReferancenNgModel', this.localReferancenNgModel);
+    this.checkTwoWayInParent = 'alexx';
+    console.log(
+      '🚀 ~ ParentComponent ~ ngOnInit ~ Two-way Data binding value',
+      this.checkTwoWayInParent
+    );
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     console.log('hello destroy');
-
   }
-  handleChange(event: Event){
+  oncheckTwoWAy() {
+    console.log(
+      '🚀 ~ ParentComponent ~ Two-way Data binding value',
+      this.checkTwoWayInParent
+    );
+  }
+
+  handleChange(event: Event) {
     // console.log("🚀 ~ ParentComponent ~ handleChange ~ event:", event.target as HTMLInputElement).value
-    const inputvalue = (event.target as HTMLInputElement).value
-    console.log("🚀 ~ ParentComponent ~ handleChange ~ inputvalue:", inputvalue)
+    const inputvalue = (event.target as HTMLInputElement).value;
+    console.log(
+      '🚀 ~ ParentComponent ~ handleChange ~ inputvalue:',
+      inputvalue
+    );
   }
 
   afterServerAdded(serverData: {

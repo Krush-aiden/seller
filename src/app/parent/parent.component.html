@@ -41,12 +41,19 @@
 
   <strong>parent content sending to child using two Way binding</strong>
   <div class="input-group mb-3">
-    <input type="text" [(ngModel)]="localReferancenNgModel" class="form-control" placeholder="Two Way binding value">
+    <input type="text" [(ngModel)]="localReferancenNgModel" class="form-control" placeholder="Two Way binding value for Child Component using #referance">
   </div>
 
+  <strong>Two Way binding In Parent Component</strong>
   <div class="input-group mb-3">
-    <!-- <input type="text" #afterContentInitValue class="form-control" placeholder="afterContentInitValue"> -->
+    <input type="text" [(ngModel)]="checkTwoWayInParent" class="form-control" placeholder="Two Way binding In Parent Component">
+   <div>
+
+     <button type="button" value="Submit" id="SubmitID" (click)="oncheckTwoWAy()"
+     class="btn btn-primary">check Console.log</button>
+    </div>
   </div>
+  <p> {{checkTwoWayInParent}}</p>
 
   <app-child (serverCreated)="afterServerAdded($event)" *ngIf="serverElements || localReferance.value"
     [srvElement]="serverElements" [onChangeReferanceValue]="localReferance.value"
